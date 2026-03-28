@@ -7,7 +7,7 @@ engine = create_engine('sqlite:///students_db.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-df = pd.read_csv('students.csv')
+df = pd.read_csv('hw3_and_hw4/students.csv')
 
 for _, row in df.iterrows():
     faculty = session.query(Faculty).filter_by(name=row['Факультет']).first()

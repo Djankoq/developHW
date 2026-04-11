@@ -33,6 +33,9 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
         error_details = traceback.format_exc()
         return {"ОШИБКА": str(e), "ДЕТАЛИ": error_details}
 
+@router.post("/test-pydantic")
+def test_pydantic(user: UserCreate):
+    return {"message": f"Супер! Pydantic работает, логин: {user.username}"}
 
 @router.post("/login")
 def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
